@@ -1,4 +1,4 @@
-FROM alpine:3.21 AS builder
+FROM alpine:3.22 AS builder
 
 RUN set -eux \
 	&& apk add --no-cache \
@@ -18,7 +18,7 @@ RUN set -eux \
 	&& find /usr/lib/ -name '*.pyc' -print0 | xargs -0 -n1 rm -rf
 
 
-FROM alpine:3.21 AS production
+FROM alpine:3.22 AS production
 ARG VERSION="latest"
 LABEL "org.opencontainers.image.licenses"="MIT"
 LABEL "org.opencontainers.image.ref.name"="Yamllint ${VERSION}"
